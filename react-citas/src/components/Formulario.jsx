@@ -58,7 +58,7 @@ const Formulario = ({createAppoinment}) => {
 
 	return (
 		<Fragment>
-			<h2>Create Appointment</h2>
+			<h2>Add a Birthday </h2>
 			{error ? <p className='alerta-error'>All fields are required</p> : null}
 
 		<form

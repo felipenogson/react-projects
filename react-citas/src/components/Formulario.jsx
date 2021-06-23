@@ -32,7 +32,7 @@ const Formulario = ({createAppoinment}) => {
 	const submitAppointment = e => {
 		e.preventDefault();
 		// Validar
-		if( pet.trim() === '' || owner.trim() === '' || date.trim() === '' || hour.trim() === '' ){ 
+		if( pet.trim() === '' || owner.trim() === '' || date.trim() === '' || hour.trim() === '' || species === '' || gender === '' ){ 
 			setError(true);
 			return;
 		}

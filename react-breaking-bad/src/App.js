@@ -40,10 +40,10 @@ function App() {
     <>
     <Quote 
       quote={quote} />
-    <Button
+    {/* <Button
       onClick={consultarAPI}>
       New quote
-      </Button>
+      </Button> */}
     </>
   );
 }

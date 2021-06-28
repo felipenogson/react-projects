@@ -80,7 +80,10 @@ body{
 }
 
 .text p {
-	font-size: .5px;
+	font-size: .5em;
+}
+.text p::before{
+	content: '-'
 }
 
 @keyframes anim3 {

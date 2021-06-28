@@ -27,7 +27,8 @@ function App() {
 
 
   const consultarAPI = async () => {
-    const request = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
+    // const request = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
+    const request = await fetch('https://breakingbadapi.com/api/quote/random');
     const response = await request.json();
     setQuote(response[0]);
   }

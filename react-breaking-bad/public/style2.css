@@ -1,0 +1,15 @@
+.container{
+	height: 100vh;
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+
+.box2{
+	width: 100%;
+	height: 100vh;
+	background-image: url('./1w.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}

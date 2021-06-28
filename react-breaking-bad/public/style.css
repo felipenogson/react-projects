@@ -16,7 +16,6 @@ body{
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	overflow: hidden;
 }
 
 #box1{
@@ -60,28 +59,33 @@ body{
 }
 
 #box2{
-	width: auto;
+	width: 400px;
 	height: auto;
 	font-family: 'Bahnschrift Condensed';
 	color: black;
-	font-size: 10em;
+	font-size: 3em;
 	font-weight: 500;
-	line-height: 130px;
+	/* line-height: 10px; */
 	position: absolute;
-	top: 250px;
+	top: 150px;
 	left: 100px;
-	overflow: hidden;
+
 }
 
-#text{ 
+.text{ 
 	position: relative;
-	left: -100%;
+	background-color: rgba(255,255,255,0.5);
+	left: -200%;
 	animation: anim3 2s forwards 3s;
+}
+
+.text p {
+	font-size: .5px;
 }
 
 @keyframes anim3 {
 	from{
-		left: -100%;
+		left: -200%;
 	}
 	to{
 		left: 0%;

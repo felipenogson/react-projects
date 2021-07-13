@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import image from './cryptomonedas.png';
 import Formulario from './components/Formulario';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Contenedor = styled.div`
   max-width: 900px;
@@ -38,7 +40,27 @@ const Heading = styled.h1`
   `;
 
 
+
 function App() {
+
+  const [coin , setCoin ] = useState('')
+  const [crypto, setCrypto] = useState('')
+
+  useEffect(() => {
+
+      const gettingCoinValue = async() => {
+        // To prevent firstime execution
+        if (coin === '') return ;
+        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${coin}`;
+
+        const response = await axios.get(url);
+
+        console.dir(response.data.DISPLAY)
+      }
+
+      gettingCoinValue()
+  }, [coin, crypto])
+   
   return (
     <Contenedor>
       <div>
@@ -49,7 +71,10 @@ function App() {
       </div>
       <div>
         <Heading>Instant Cryptocurrency Prices</Heading>
-        <Formulario />
+        <Formulario 
+          setCoin={setCoin}
+          setCrypto={setCrypto}
+        />
       </div>
     </Contenedor>
   );

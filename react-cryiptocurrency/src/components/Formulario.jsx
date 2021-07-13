@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled';
 import useCurrency from '../hooks/useCurrency';
 import useCrypto from '../hooks/useCrypto';
+import Error from './Error';
 import axios from 'axios';
 
 // Styles for the components  
@@ -23,7 +24,7 @@ const Button = styled.input`
 	}`
 
 
-const Formulario = () => {
+const Formulario = ({setCoin, setCrypto}) => {
 
 	// Creating state for the list of cryptocoins
 	const [ cryptocoins, setCryptocoins] = useState([])
@@ -37,7 +38,7 @@ const Formulario = () => {
 	];
 
 	// using custom hook useCurrency
-	const [currency, SelectCurrency, setCurrency] = useCurrency('Select Currency', '', CURRENCIES );
+	const [currency, SelectCurrency] = useCurrency('Select Currency', '', CURRENCIES );
 
 	// using custom hook useCrypto
 	const [crypto, SelectCrypto] = useCrypto('Select Crypto', '', cryptocoins);
@@ -56,13 +57,25 @@ const Formulario = () => {
 	// When submit
 	const valueCoin = (e) => {
 		e.preventDefault();
-		console.dir(e)
+
+		// Validate fields
+		if ( currency === '' | crypto === '' ){
+			setError(true);
+			return
+		}
+
+		setError(false);
+		setCoin(currency);
+		setCrypto(crypto)
+
+
 	}
 
 	return (
 		<form 
 			onSubmit={valueCoin}
 		>
+			{ error ? <Error message="All the fields are required" /> : null}
 			<SelectCurrency />
 			<SelectCrypto />
 			<Button 

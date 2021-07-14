@@ -3,6 +3,8 @@ import image from './cryptomonedas.png';
 import Formulario from './components/Formulario';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Prices from './components/Prices';
+import Spinner from './components/Spinner';
 
 const Contenedor = styled.div`
   max-width: 900px;
@@ -21,7 +23,7 @@ const Image = styled.img`
 
 const Heading = styled.h1`
   font-family: 'Bebas Neue', cursive;
-  color: #fff;
+  color: #ddd;
   text-align: left;
   font-weight: 700;
   font-size: 50px;
@@ -43,24 +45,43 @@ const Heading = styled.h1`
 
 function App() {
 
-  const [coin , setCoin ] = useState('')
-  const [crypto, setCrypto] = useState('')
+  const [coin , setCoin ] = useState('');
+  const [crypto, setCrypto] = useState('');
+  const [results, setResults] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
 
       const gettingCoinValue = async() => {
         // To prevent firstime execution
         if (coin === '') return ;
-        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${coin}`;
 
+
+        const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${coin}`;
         const response = await axios.get(url);
 
-        console.dir(response.data.DISPLAY)
+        // Show the spinner
+        setLoading(true);
+
+        // Show the spinner for 3s
+        setTimeout( () => {
+
+          setLoading(false)
+
+        // Saving the results
+        setResults(response.data.DISPLAY[crypto][coin])
+        }, 3000);
+
+
       }
 
       gettingCoinValue()
   }, [coin, crypto])
    
+
+  // Show spinner or results
+  const component = (loading) ? <Spinner /> : <Prices results={results} />
+
   return (
     <Contenedor>
       <div>
@@ -75,6 +96,7 @@ function App() {
           setCoin={setCoin}
           setCrypto={setCrypto}
         />
+        {component}
       </div>
     </Contenedor>
   );

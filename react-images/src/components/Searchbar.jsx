@@ -17,7 +17,6 @@ const Searchbar = ({setSearch}) => {
 		setError(false);
 
 		// Send info to principal component
-		console.log('enviando al  principal');
 		setSearch(query);
 
 

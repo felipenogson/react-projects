@@ -3,7 +3,7 @@ import { Badge, Col, Card } from 'react-bootstrap';
 
 const ImageCard = ({image}) => {
 
-	const { largeImageURL, likes, previewURL, tags, views, webformatURL} = image;
+	const { largeImageURL, likes, views, webformatURL} = image;
 
 	return (
 		<Col lg={4}  md={6} sm={12} xs={12} className="mb-4">

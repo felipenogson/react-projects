@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react";
 import Searchbar from "./components/Searchbar";
 import ListImages from './components/ListImages';
+import MenuBar from "./components/MenuBar";
 import { Row, Pagination, Col } from "react-bootstrap";
 
 function App() {
@@ -55,6 +56,7 @@ const nextPage = () => {
   return (
 
     <div className="container">
+      <MenuBar />
       <div className="p-5 bg-light mt-5 rounded" id="jumbotron">
         <div className="container">
           <h1 className="display-3">React-Images</h1>

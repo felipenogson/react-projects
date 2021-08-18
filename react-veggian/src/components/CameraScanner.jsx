@@ -3,7 +3,6 @@ import { useState } from 'react';
 import BarcodeScannerComponent from 'react-qr-barcode-scanner';
 
 const CameraScanner = ({onHide}) => {
-	beep()
 
 	const [data, setData] = useState("Not Found")
 	function beep() {
@@ -14,13 +13,15 @@ const CameraScanner = ({onHide}) => {
 	const onRead = (result) => {
 		setData(result.text);
 		beep();
+		onHide();
 
 	}
 
 	return (
 		<>
 		<BarcodeScannerComponent
-		 width={500}
+		//  width={500}
+		 className="w-100"
 		 height={500}
 		 onUpdate={ (err, result) => {
 			 if(result) onRead(result);

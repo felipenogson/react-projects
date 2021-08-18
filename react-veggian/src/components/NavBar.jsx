@@ -1,8 +1,20 @@
 import React from 'react'
 import logo from "../assets/logo.png"
 import { Row, Col } from "react-bootstrap";
+import { useState } from 'react';
 
-const NavBar = () => {
+const NavBar = (props) => {
+
+	const [query, setQuery] = useState('');
+
+	const searchCode = (e) => {
+		e.preventDefault();
+		if (query === '') return;
+		props.setSearch(query);
+		setQuery('')
+	}
+
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light">
 			<div className="container-fluid">
@@ -47,8 +59,14 @@ const NavBar = () => {
 						</ul>
 						<ul className="navbar-nav ms-auto">
 							<li className="nav-item">
-								<form className="d-flex">
-									<input className="form-control me-sm-2" type="text" placeholder="Search" />
+								<form 
+								  onSubmit={searchCode}
+								  className="d-flex">
+									<input 
+									  onChange={ (e) => setQuery(e.target.value)}
+									  className="form-control me-sm-2" 
+									  type="text" 
+									  placeholder="Search" />
 									<button className="btn btn-success my-2 my-sm-0" type="submit">Search</button>
 								</form>
 							</li>

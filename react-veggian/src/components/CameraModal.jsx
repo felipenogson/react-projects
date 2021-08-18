@@ -14,11 +14,12 @@ const CameraModal = ({show, onHide}) => {
 		>
        <Modal.Header closeButton>
          <Modal.Title id="contained-modal-title-vcenter">
-           Modal heading
+           Scanner
+           
          </Modal.Title>
        </Modal.Header>
        <Modal.Body>
-         <h4>Centered Modal</h4>
+         <h4>Scan the BarCode</h4>
 		 <CameraScanner onHide={onHide} />
        </Modal.Body>
        <Modal.Footer>

@@ -1,46 +1,31 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import {Table} from 'react-bootstrap'
-import IngredientRow from './IngredientRow'
+import { useState } from 'react';
+import { Table } from "react-bootstrap";
+import IngredientRow from './IngredientRow';
 
 const Foodinfo = ({food_info}) => {
 
-	const [error, setError] = useState(false);
+
+	const [error, setError] = useState(true);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [ingredients, setIngredients] = useState([]);
 
-	console.log(food_info)
 
-	useEffect(() => {
-		const handleError = () => {
-
-			if (food_info.status === 0){
-				setError(true)
-				setErrorMessage("Oh Snap! Can't found that code, Sorry")
-				return;
-			} else if ( !("ingredients" in food_info.product)){
-				setError(true);
-				setErrorMessage("Oh Snap! Can't found ingredients for this product");
-				return;
-
-			}
-			else {
-				console.log('we are here')
-				setIngredients(food_info.product.ingredients)
-				setError(false)
-			}
-		}
-		handleError()
-	}, [food_info.status, food_info.product])
-
-	console.log(error)
-
+	if( food_info.status === 0){
+		setError(true)
+		console.log(error)
+		setErrorMessage("Oh snap! The product can't be found");
+	}else if (!('ingredients' in food_info.product)){
+		setError(true)
+		setErrorMessage("Oh snap! We don't have the ingredients for that product " )
+	}else {
+		setIngredients(food_info.product.ingredients)
+	}
 
 	return (
-
 		<div className="mt-2 mb-4 rounded-3">
-		  <div className="container-fluid py-5 ">
+		<div> Hola </div>
+		  {/* <div className="container-fluid py-5 ">
         { (error) ?
 			<div> Error: { errorMessage } </div>
 			:
@@ -61,7 +46,7 @@ const Foodinfo = ({food_info}) => {
 		      </Table>
 		    </div>
         }
-		  </div>
+		  </div> */}
 		</div>
 	)
 }

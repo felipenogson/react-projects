@@ -30,34 +30,6 @@ const NavBar = (props) => {
 					<Row className='w-100'>
 					<Col className="col-12 w-100 d-flex justify-content-between">
 						<ul className="navbar-nav me-auto">
-							<li className="nav-item dropdown">
-								<a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="http://localhost:3000" role="button"
-									aria-haspopup="true" aria-expanded="false">Language</a>
-								<div className="dropdown-menu">
-									<a className="dropdown-item" href="http://localhost:3000">English</a>
-									<a className="dropdown-item" href="http://localhost:3000">Spanish</a>
-								</div>
-							</li>
-							<li className="nav-item">
-								<a className="nav-link" href="http://localhost:3000">Sign up for Email</a>
-							</li>
-						</ul>
-						<ul className="navbar-nav ms-auto">
-							<li className="nav-item">
-								<a className="nav-link" href="http://localhost:3000">Change my location</a>
-							</li>
-							<li className="nav-item">
-								<a className="nav-link" href="http://localhost:3000">About</a>
-							</li>
-						</ul>
-					</Col>
-					<Col className="col-12 w-100 d-flex justify-content-between">
-						<ul className="navbar-nav me-auto">
-							<li className="nav-item active">
-								<a className="nav-link" href="http://localhost:3000">Download App</a>
-							</li>
-						</ul>
-						<ul className="navbar-nav ms-auto">
 							<li className="nav-item">
 								<form 
 								  onSubmit={searchCode}
@@ -69,6 +41,11 @@ const NavBar = (props) => {
 									  placeholder="Search" />
 									<button className="btn btn-success my-2 my-sm-0" type="submit">Search</button>
 								</form>
+							</li>
+						</ul>
+						<ul className="navbar-nav ms-auto">
+							<li className="nav-item active">
+								<a className="nav-link" href="http://localhost:3000">About</a>
 							</li>
 						</ul>
 					</Col>

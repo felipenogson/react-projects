@@ -9,6 +9,7 @@ function App() {
 
   const [search, setSearch ] = useState('')
   const [food_info, setFoodinfo] = useState({})
+  
 
   useEffect(() => {
     const fetchAPI = async ()  => {
